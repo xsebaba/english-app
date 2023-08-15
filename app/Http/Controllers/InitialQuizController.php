@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Result;
 use App\Models\Test;
 
 class InitialQuizController extends Controller
@@ -13,7 +14,6 @@ class InitialQuizController extends Controller
         // Pobierz pierwsze pytanie i przekieruj użytkownika do strony pytania
         $questions = Question::where('test_id', '=', 1)->get();
 
-       // return redirect()->route('quiz.question', $question->id);
        return view('question', compact('questions'));
     }
 
@@ -27,18 +27,31 @@ class InitialQuizController extends Controller
         return view('question', compact('question'));
     }
 
-    public function saveAnswer(Request $request)
+    public function storeAnswer(Result $result, Request $request)
     {
-      
-        $validate = request()->validate([
-            'answers' => 'required|array',
-        ]);
+        $existingResult = Result::where('user_id', $request->user()->id)
+            ->where('test_id', $request->test_id)
+            ->first();
         
-        $answers= json_encode($validate);
-             
-        Answer::create(['answers' => $answers]);
-
-        return redirect()->route('quiz.result', compact('answers'));
+        if ($existingResult) {
+            if ($request->score > $existingResult->score) {
+                    $existingResult->score = $request->score;
+                    $existingResult->save();
+                    return redirect('/')->with('success', 'Wyniki zostały zapisane.');
+            }else {
+            return redirect('/')->with('success', 'Niestety wcześniej udało ci się lepiej napisać ten test. Twój wynik nie został zapisany.');
+            }
+        }
+        else{
+            $result->create([
+                'user_id'=> $request->user()->id,
+                'max_score' => $request->max_score,
+                'score' => $request->score,
+                'test_id' => $request->test_id
+            ]);
+            
+        return redirect('/')->with('success', 'Wyniki zostały zapisane.');
+        }
     }
 
     public function showResult(Request $request)

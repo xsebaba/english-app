@@ -52,28 +52,34 @@ class DatabaseSeeder extends Seeder
 
         $questions = [
             [
-                'question' => 'What is the capital of France?',
-                'correct_answer' => 'Paris',
+                'question' => 'How ____ sisters do you have?',
+                'correct_answer' => 'many',
                 'test_id'=> 1,
-                'answers' => json_encode(['Paris', 'London', 'Berlin', 'Rome']),
+                'answers' => json_encode(['much', 'many', 'older', 'younger', 'old']),
             ],
             [
-                'question' => 'Who painted the Mona Lisa?',
-                'correct_answer' => 'Leonardo da Vinci',
+                'question' => 'What time is it?',
+                'correct_answer' => 'It is half past ten.',
                 'test_id'=> 1,
-                'answers' => json_encode(['Pablo Picasso', 'Vincent van Gogh', 'Leonardo da Vinci', 'Claude Monet']),
+                'answers' => json_encode(['It is eleven quater.', 'It is quater.', 'It is time.', 'It is half past ten.']),
             ],
             [
-                'question' => 'What is the largest planet in our solar system?',
-                'correct_answer' => 'Jupiter',
+                'question' => 'What do you do?',
+                'correct_answer' => 'I am a doctor.',
                 'test_id'=> 1,
-                'answers' => json_encode(['Mars', 'Saturn', 'Jupiter', 'Neptune']),
+                'answers' => json_encode(['I am doctor.', 'I am studying.', 'I am a doctor.', 'I am driving a car.']),
             ],
             [
-                'question' => 'Which country is known for its pyramids?',
-                'correct_answer' => 'Egypt',
+                'question' => 'Where ___ you ___ this t-shirt.',
+                'correct_answer' => 'did/buy',
                 'test_id'=> 1,
-                'answers' => json_encode(['Greece', 'Mexico', 'Egypt', 'India']),
+                'answers' => json_encode(['did/bought', 'do/buy', 'did/buy','have/buy', 'did not/bought']),
+            ],
+            [
+                'question' => 'Who wrote the play "Romeo and Juliet"?',
+                'correct_answer' => 'William Shakespeare',
+                'test_id'=> 1,
+                'answers' => json_encode(['Arthur Miller', 'Tennessee Williams', 'William Shakespeare', 'Samuel Beckett']),
             ],
             [
                 'question' => 'Who wrote the play "Romeo and Juliet"?',

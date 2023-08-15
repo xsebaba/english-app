@@ -15,9 +15,12 @@
             <hr class="w-full ml-auto items-center border-b border-gray-50 opacity-25 mt-6 py-0" />
           </div>
           <div class="my-20">
-            <a class="bg-slate-400/70  text-2xl p-4 rounded-lg hover:bg-slate-400 border-white border-2 tracking-wider" style="font-family: Orbitron" href="/test">
-              Rozpocznij test!
-            </a>
+            @if(1==0)
+            @else
+              <a class="bg-slate-400/70  text-2xl p-4 rounded-lg hover:bg-slate-400 border-white border-2 tracking-wider" style="font-family: Orbitron" href="/quiz">
+                Rozpocznij test!
+              </a>
+            @endif
           </div>
         </div>
       </div>

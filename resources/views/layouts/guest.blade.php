@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="/resources/css/fontello.css" type="text/css" />
     <!-- Define your gradient here - use online tools to find a gradient -->
     <style>
+      .green-border:focus {
+        border-color: #a3e635;
+        outline: none;
+      }
       .gradient {
         background: linear-gradient(180deg, #fae8ff 0%, #d8b4fe 100%);
       }
@@ -87,13 +91,13 @@
     </style>
     @vite('resources/css/app.css')
   </head>
-  <body class="leading-normal tracking-normal text-slate-800 bg-fuchsia-100" style="font-family:'Source Sans Pro', sans-serif;">
+  <body class="leading-normal tracking-normal text-slate-800 bg-slate-100" style="font-family:'Source Sans Pro', sans-serif;">
     <!--Nav-->
-    <nav id="header" class="fixed w-full z-30 top-0 bg-fuchsia-100/50">
+    <nav id="header" class="fixed w-full z-30 top-0 bg-slate-100/50">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 pt-2">
-        <div class="pl-4 flex items-center">
-          <a class="toggleColour no-underline hover:no-underline text-2xl font-bold transform transition hover:scale-110 duration-300 ease-in-out" style="font-family: Orbitron"href="/">      
-            Clinic
+        <div class="ml-4 px-2 flex items-center border-solid border-2 border-black rounded-md">
+          <a class="toggleColour no-underline hover:no-underline text-2xl font-bold transform transition hover:scale-110 duration-300 ease-in-out m-auto" style="font-family: Orbitron"href="/">      
+            L
           </a>
         </div>
         <div class="block lg:hidden pr-4">
@@ -104,7 +108,7 @@
             </svg>
           </button>
         </div>
-        <div class="w-full flex-grow lg:flex items-center lg:w-auto hidden lg:mt-0 bg-fuchsia-100/80 lg:bg-transparent text-slate-800 lg:p-0 z-20 mt-3"  id="nav-content">
+        <div class="w-full flex-grow lg:flex items-center lg:w-auto hidden lg:mt-0 bg-slate-100/80 lg:bg-transparent text-slate-800 lg:p-0 z-20 mt-3"  id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center md:mb-0 pb-2">
             <li class="mr-3">
               <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="/przetestuj-swoj-angielski">Przetestuj swój angielski</a>
@@ -143,7 +147,7 @@
    
 
     <!-- FOOTER -->
-    <footer class="bg-fuchsia-100/40">
+    <footer class="bg-slate-100/40">
     <!-- Change the colour #f8fafc to match the previous section colour -->
       
      

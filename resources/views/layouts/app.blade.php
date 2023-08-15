@@ -22,8 +22,12 @@
     <link rel="stylesheet" href="/resources/css/fontello.css" type="text/css" />
     <!-- Define your gradient here - use online tools to find a gradient -->
     <style>
+      .green-border:focus {
+        border-color: #a3e635;
+        outline: none;
+      }
       .gradient {
-        background: linear-gradient(180deg, #fae8ff 0%, #d8b4fe 100%);
+        background: linear-gradient(180deg, #fae8ff 0%, #E2E8F0 100%);
       }
   
       /* Animate vertical fade in */
@@ -87,24 +91,24 @@
     </style>
     @vite('resources/css/app.css')
   </head>
-  <body class="leading-normal tracking-normal text-slate-800 bg-fuchsia-100" style="font-family:'Source Sans Pro', sans-serif;">
+  <body class="leading-normal tracking-normal text-slate-800 bg-slate-100" style="font-family:'Source Sans Pro', sans-serif;">
     <!--Nav-->
-    <nav id="header" class="fixed w-full z-30 top-0 bg-fuchsia-100/50">
+    <nav id="header" class="fixed w-full z-30 top-0 bg-slate-100/50">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 pt-2">
-        <div class="pl-4 flex items-center">
-          <a class="toggleColour no-underline hover:no-underline text-2xl font-bold transform transition hover:scale-110 duration-300 ease-in-out" style="font-family: Orbitron"href="/">      
-            Clinic
+        <div class="ml-4 px-2 flex items-center border-solid border-2 border-black rounded-md">
+          <a class="toggleColour no-underline hover:no-underline text-2xl font-bold transform transition hover:scale-110 duration-300 ease-in-out m-auto" style="font-family: Orbitron; text-shadow: 0px 0px 4px #3EF714;"href="/">      
+            L
           </a>
         </div>
         <div class="block lg:hidden pr-4">
-          <button id="nav-toggle" class="flex items-center p-1 text-white  focus:outline-none focus:shadow-outline transform transition hover:scale-110 duration-300 ease-in-out">
+          <button id="nav-toggle" class="flex items-center p-1 text-black focus:outline-none focus:shadow-outline transform transition hover:scale-110 duration-300 ease-in-out">
             <svg class="fill-current h-6 w-6 mb-1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <title>Menu</title>
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
             </svg>
           </button>
         </div>
-        <div class="w-full flex-grow lg:flex items-center lg:w-auto hidden lg:mt-0 bg-fuchsia-100/80 lg:bg-transparent text-slate-800 lg:p-0 z-20 mt-3"  id="nav-content">
+        <div class="w-full flex-grow lg:flex items-center lg:w-auto hidden lg:mt-0 bg-slate-100/80 lg:bg-transparent text-slate-800 lg:p-0 z-20 mt-3"  id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center md:mb-0 pb-2">
             <li class="mr-3">
               <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="/przetestuj-swoj-angielski">Przetestuj swój angielski</a>
@@ -120,6 +124,12 @@
               
               <li class="mr-3">
                 <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="/">Twoje konto</a>
+              </li>
+              <li class="mr-3">
+                <form method="POST" action="{{route('logout')}}">
+                  @csrf
+                  <button class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" type="submit">Wyloguj</a>
+                </form>
               </li>
             @else
               <li class="mr-3">
@@ -147,7 +157,7 @@
 
 
     <!-- FOOTER -->
-    <footer class="bg-fuchsia-100/40">
+    <footer class="bg-slate-100/40">
     <!-- Change the colour #f8fafc to match the previous section colour -->
       
      
@@ -156,7 +166,7 @@
           Jeśli masz jakiekolwiek pytania - skontaktuj się z nami!
         </h2>
         <div class="w-full mb-4">
-          <div class="h-1 mx-auto bg-black w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+          <div class="h-1 mx-auto bg-lime-400 w-1/6 opacity-100 my-0 py-0 rounded-t"></div>
         </div>
         <h3 class="my-4 text-3xl leading-tight">
           info@testyourenglish.com
@@ -175,8 +185,27 @@
         </div>
       </section>
     </footer>
+    @if (session()->has('success'))
+      <div id="msg" class="fixed bottom-3 right-3 bg-slate-800 text-white py-2 px-4 rounded-xl">
+        <p> {{session('success')}} </p>
+      </div>
+    @endif  
     
-   
+    <!-- Turning off the success msg after 6 sec-->
+    <script>
+      // Pobranie referencji do elementu div
+      const divMsg = document.getElementById('msg');
+
+      // Funkcja do ukrywania diva po 6 sekundach
+      function hideDivAfterTimeout() {
+          setTimeout(function() {
+              divMsg.style.display = 'none';
+          }, 6000); // 6000 milisekund (6 sekund)
+      }
+
+      // Wywołanie funkcji ukrywania po załadowaniu strony
+      hideDivAfterTimeout();
+  </script>
     <!-- Navigation management  -->
     <script>
       /*

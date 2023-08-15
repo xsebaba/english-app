@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
-           
-            $table->foreignId('test_id');
-            $table->foreignId('user_id');
-            $table->integer('score');
-            $table->integer('max_score')->nullable();
+        Schema::create('user_lesson', function (Blueprint $table) {
+            $table->primary(['user_id', 'lesson_id']);
+     
+
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('user_lesson');
     }
 };
