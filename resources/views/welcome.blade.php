@@ -66,7 +66,7 @@
               <span class="mr-4 text-2xl" style="font-family: Orbitron;  text-shadow: 2px 2px 2px #ddd; text-shadow: 0px 0px 16px #3EF714">W</span>
               <h2 class="text-xl md:text-2xl font-medium">Wszystkie odpowiedzi otrzymasz od razu.</h2>
             </div>
-            <p class="text-l md:text-xl  mt-2">Nie musisz czekać do samego końca. Prawidłowe odpowiedzi wyświetlą się niemal natychmiast po zaznaczeniu jednego z elementów do wyboru. Otrzymasz niemal od razu informację zwrotną.</p>
+            <p class="text-l md:text-xl  mt-2">Nie musisz czekać do samego końca. Prawidłowe odpowiedzi wyświetlą się po zakończeniu testu.</p>
           </div>
         </div>
  

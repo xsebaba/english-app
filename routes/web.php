@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InitialQuizController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +52,8 @@ Route::get('/registerafterquiz', function(){
     return redirect('/register');
 });
 
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/course/{course:course_slug}', [CourseController::class, 'show']);
+
+Route::get('/lesson/{lesson:lesson_slug}', [LessonController::class, 'show']);
 require __DIR__.'/auth.php';

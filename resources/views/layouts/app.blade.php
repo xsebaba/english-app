@@ -166,7 +166,7 @@
           Jeśli masz jakiekolwiek pytania - skontaktuj się z nami!
         </h2>
         <div class="w-full mb-4">
-          <div class="h-1 mx-auto bg-lime-400 w-1/6 opacity-100 my-0 py-0 rounded-t"></div>
+          <div class="h-1 mx-auto bg-lime-600 w-1/6 opacity-100 my-0 py-0 rounded-t"></div>
         </div>
         <h3 class="my-4 text-3xl leading-tight">
           info@testyourenglish.com

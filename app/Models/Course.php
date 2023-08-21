@@ -9,9 +9,9 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function subject()
+    public function lesson()
     {
-        return $this->hasMany(Subject::class);
+        return $this->hasMany(Lesson::class);
     }
 
     public function test()

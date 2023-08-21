@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->text('subject_name');
-            $table->foreignId('level_id');
+            $table->foreignId('course_id');
             $table->timestamps();
         });
     }
