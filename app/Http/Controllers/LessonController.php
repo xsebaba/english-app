@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    public function index(){
-         
+    public function index()
+    {
+        $lessons = Lesson::orderBy('course_id')->get();
+         return view('lessons', compact('lessons'));
     }
 
     public function show(Lesson $lesson){
+        
+    
         return view('lesson', compact('lesson'));
     }
 }

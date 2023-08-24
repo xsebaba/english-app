@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InitialQuizController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -25,9 +26,7 @@ Route::get('/', function () {
 
 Route::get('/przetestuj-swoj-angielski', [TestController::class, 'showInitialTest']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/library', [LibraryController::class, 'show'])->middleware(['auth', 'verified'])->name('library');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -55,5 +54,6 @@ Route::get('/registerafterquiz', function(){
 Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/course/{course:course_slug}', [CourseController::class, 'show']);
 
+Route::get('/lessons', [LessonController::class, 'index'])->name('lessons');
 Route::get('/lesson/{lesson:lesson_slug}', [LessonController::class, 'show']);
 require __DIR__.'/auth.php';

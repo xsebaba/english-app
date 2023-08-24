@@ -9,6 +9,7 @@ use \App\Models\Question;
 use \App\Models\Subject;
 use \App\Models\Test;
 use \App\Models\Lesson;
+use Illuminate\Support\Facades\Hash;
 
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -26,11 +27,12 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
+        User::create([
+            'name' => 'pedzel',
+            'email' => 'pedzel@test.com',
+            'password' => Hash::make('qwerty1234')
+        ]);
+        
         Level::create([
             'grade'=> 'A1'
         ]);
@@ -122,7 +124,7 @@ class DatabaseSeeder extends Seeder
         $lessons = [
             [
                 'lesson_name' => "Do or make?",
-                'lesson_slug' => "do-or-make?",
+                'lesson_slug' => "do-or-make",
                 'lesson_body' => 
                     '<article>
                     <p> Zarówno <b>do</b> jak i <b>make</b> można przetłumaczyć na język polski jako czasownik <b>robić</b>. Różnica między tymi wyrażeniami dotyczy sposobu w jaki są one używane. Nie są to bowiem synonomi, które dowolnie zastępujemy</p>

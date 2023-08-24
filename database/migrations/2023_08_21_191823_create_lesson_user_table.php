@@ -13,18 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('library_id')->onDelete('cascade')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('lesson_user', function (Blueprint $table) {
+
+            $table->primary(['lesson_id', 'user_id']);
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_lesson');
     }
 };

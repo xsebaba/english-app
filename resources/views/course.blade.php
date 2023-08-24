@@ -10,7 +10,9 @@
             <div class="dark:bg-gray-800 overflow-hidden">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-bold">Witaj na stronie kursu <span style="text-shadow: 0px 0px 16px #3EF714""> {{$course->course_name}}</span></h1>
+                    @isset($course->course_description)
                     <h2 class="text-xl font-bold mt-3">{{$course->course_description}} </h2>
+                    @endisset
                 </div>
             
             </div>
