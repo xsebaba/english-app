@@ -119,7 +119,7 @@
             @auth
              
               <li class="mr-3">
-                <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="/">Administracja</a>
+                <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="{{route('library')}}">Biblioteka</a>
               </li>
               
               <li class="mr-3">

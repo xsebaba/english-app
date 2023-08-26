@@ -51,7 +51,7 @@ Route::get('/registerafterquiz', function(){
     return redirect('/register');
 });
 
-Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
 Route::get('/course/{course:course_slug}', [CourseController::class, 'show']);
 
 Route::get('/lessons', [LessonController::class, 'index'])->name('lessons');

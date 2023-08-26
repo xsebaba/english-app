@@ -18,8 +18,7 @@ return new class extends Migration
             $table->primary(['lesson_id', 'user_id']);
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
-            $table->boolean('completed')->default(false);
-            $table->timestamps();
+            
         });
     }
     /**
