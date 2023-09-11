@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+    @isset($user->courses)
     <div class="py-12">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -29,10 +30,13 @@
                         <h1 class="text-2xl font-bold">Poniżej znajduje się lista twoich kursów</h1>
                         <h2 class="text-xl font-bold">Pamiętaj, że będą one rozbudowywane. Na razie pracujemy nad kolejnymi kursami. </h2>
                     </div>
+                
                 @foreach($user->courses as $course)
                         <x-course-list-card :course="$course" :loop="$loop" />
                 @endforeach
+                
             </div>
         </div>
     </div>
+    @endisset
 </x-app-layout>

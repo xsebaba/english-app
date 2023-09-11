@@ -5,6 +5,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\InitialQuizController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,14 @@ Route::get('/', function () {
 });
 
 Route::get('/przetestuj-swoj-angielski', [TestController::class, 'showInitialTest']);
+
+Route::get('/diary', [DiaryController::class, 'index'])->name('diary');
+Route::get('/diary/create', [DiaryController::class, 'create'])->name('createDiary');
+Route::post('/diary', [DiaryController::class, 'store']);
+Route::get('/diary/{user}', [DiaryController::class, 'show']);
+Route::get('/diary/edit/{diary}',[DiaryController::class, 'edit']);
+Route::delete('/diary/{diary}', [DiaryController::class, 'destroy']);
+
 
 Route::get('/library', [LibraryController::class, 'show'])->middleware(['auth', 'verified'])->name('library');
 

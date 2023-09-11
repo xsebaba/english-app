@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('user_test', function (Blueprint $table) {
     
             $table->primary(['user_id', 'test_id']);
-     
-
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('test_id')->references('id')->on('tests')->onDelete('cascade');
            

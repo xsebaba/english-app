@@ -38,12 +38,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Subject::create([
-            'subject_name' => 'Gramatyka',
-            'course_id' => 2
+            'subject_name' => 'Gramatyka', 
         ]);
         Subject::create([
             'subject_name' => 'Fonetyka',
-            'course_id' => 2
         ]);
 
 

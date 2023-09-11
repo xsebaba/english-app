@@ -61,6 +61,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Result::class);
     }
+
+    public function diaries()
+    {
+        return $this->hasMany(Diary::class);
+    }
     public function tests()
     {
         return $this->belongsToMany(Test::class);

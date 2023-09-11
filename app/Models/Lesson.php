@@ -19,4 +19,8 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    public function diaries()
+    {
+        return $this->hasMany(Diary::class);
+    }
 }

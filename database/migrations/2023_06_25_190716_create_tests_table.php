@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->text('test_name')->nullable();
+            $table->text('test_name')->unique();
             $table->foreignId('course_id')->nullable();
             $table->timestamps();
         });

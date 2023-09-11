@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('diaries', function (Blueprint $table) {
             $table->id();
-            $table->text('subject_name');
+            $table->text('topic');
+            $table->text('description'); 
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('lesson_id')->nullable()->references('id')->on('lessons')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('diaries');
     }
 };
