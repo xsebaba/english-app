@@ -9,7 +9,7 @@
     <div class="container px-3 my-60 mx-auto flex flex-wrap flex-col md:flex-row justify-center">
         <!-- Session Status -->
 
-        <form method="POST" action="{{ route('diary') }}">
+        <form method="POST" action="{{ route('uploadDiary') }}" enctype="multipart/form-data">
             @csrf
 
             <!-- Topic -->
@@ -28,18 +28,21 @@
                             rows="4"
                             type="text"
                             name="description"
-                            required></textarea>
+                            required>{{old('description')}}</textarea>
 
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
+            <!-- Choose student -->
             <div class="mt-4">
                 <x-input-label for="user_id" :value="__('Student')" />
                 <select name="user_id" id="user_id" class="w-full block p-2 border border-lime-400 bg-lime-400 text-white color-white uppercase rounded-md focus:ring-lime-400 dark:focus:ring-lime-600 hover:bg-lime-600">
                     @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
+                        <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
+                <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
             </div>
+            <!-- Choose lesson -->
             <div class="mt-4">
                 <x-input-label for="lesson_id" :value="__('Lesson')" />
                 <select name="lesson_id" id="lesson_id" class="w-full block p-2 border border-lime-400 bg-lime-400 text-white color-white uppercase rounded-md focus:ring-lime-400 dark:focus:ring-lime-600 hover:bg-lime-600">                   
@@ -48,8 +51,15 @@
                         <option value="{{$lesson->id}}">{{$lesson->lesson_name}}</option>
                     @endforeach
                 </select>
+                <x-input-error :messages="$errors->get('lesson_id')" class="mt-2" />
             </div>
-        
+            <!-- Add files -->
+            <div class="mt-4">
+                <x-input-label for="file" value="Załącz materiały" />
+                <input type="file" name="files[]" class="bg-lime-400 hover:bg-lime-600" multiple>
+                <x-input-error :messages="$errors->get('file')" class="mt-2" />
+            </div>
+
             <div class="flex items-center justify-end mt-4">
 
 

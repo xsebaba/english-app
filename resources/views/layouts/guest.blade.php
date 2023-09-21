@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Dokdo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text&family=Open+Sans:wght@300&family=Orbitron&family=Six+Caps&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/fontello.css" type="text/css" />
     <!-- Define your gradient here - use online tools to find a gradient -->

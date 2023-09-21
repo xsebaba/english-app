@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('topic');
             $table->text('description'); 
+            $table->json('file_paths')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('lesson_id')->nullable()->references('id')->on('lessons')->onDelete('cascade');
             

@@ -25,13 +25,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/przetestuj-swoj-angielski', [TestController::class, 'showInitialTest']);
 
 Route::get('/diary', [DiaryController::class, 'index'])->name('diary');
 Route::get('/diary/create', [DiaryController::class, 'create'])->name('createDiary');
-Route::post('/diary', [DiaryController::class, 'store']);
+Route::post('/diary', [DiaryController::class, 'store'])->name('uploadDiary');
 Route::get('/diary/{user}', [DiaryController::class, 'show']);
 Route::get('/diary/edit/{diary}',[DiaryController::class, 'edit']);
+Route::patch('/diary/{diary}',[DiaryController::class, 'update']);
 Route::delete('/diary/{diary}', [DiaryController::class, 'destroy']);
 
 
@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class,   'destroy'])->name('profile.destroy');
 });
 
-Route::get('/quiz', [InitialQuizController::class, 'index'])->name('quiz.index');
+Route::get('/przetestuj-swoj-angielski', [InitialQuizController::class, 'index'])->name('quiz.index');
 
 Route::post('/dashboard', [InitialQuizController::class, 'storeAnswer'])->name('quiz.answer');
 Route::post('/dashboard', [InitialQuizController::class, 'storeAnswer'])->name('quiz.answer');

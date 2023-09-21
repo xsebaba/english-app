@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use \App\Models\User;
+use \App\Models\Diary;
 use \App\Models\Answer;
 use \App\Models\Course;
 use \App\Models\Level;
@@ -44,6 +45,11 @@ class DatabaseSeeder extends Seeder
             'subject_name' => 'Fonetyka',
         ]);
 
+        Diary::create([
+            'topic' => 'To jest temat',
+            'description' => 'Opis   Jeśli masz jakiekolwiek pytania - skontaktuj się z nami!Jeśli masz jakiekolwiek pytania - skontaktuj się z nami!',
+            'user_id' => 1,
+        ]);
 
         Course::create([
             'course_name' =>"Gramatyka dla początkujących",
@@ -243,5 +249,7 @@ class DatabaseSeeder extends Seeder
         foreach ($lessons as $lesson) {
                 Lesson::create($lesson);
         };
+
+
     }
 };

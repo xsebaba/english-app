@@ -21,12 +21,22 @@
                         <h2 class="md:text-xl text-md font-bold">{{$diary->created_at->format('Y-m-d')}}</h2>
                         
                         @isset($diary->lesson->lesson_name)
-                            <a href="/lesson/{{$diary->lesson->lesson_slug}}">
-                                <h2 class="md:text-xl text-md font-bold hover:bg-lime-400 rounded rounded-xl">
+                            <a href="/lesson/{{$diary->lesson->lesson_slug}}" class="block">
+                                <h2 class=" md:text-xl text-md font-bold hover:bg-lime-400 rounded rounded-xl">
                                     {{$diary->lesson->lesson_name}}
                                 </h2>
                             </a>
                         @endisset
+                        @if($diary->file_paths)
+                            @foreach(json_decode($diary->file_paths) as $filePath)
+                            <div class="block my-1">
+                                <x-primary-link >
+                                    <a  href="{{ asset('storage/' . $filePath)}}" target="_blank">Sprawdź załącznik</a>
+                                </x-primary-link>
+                            </div>
+                            @endforeach
+                        @endif
+
                     </div>
                 </div>
                 <div class="md:flex md:flex-wrap items-center md:text-xl text-sm mx-auto p-6 md:max-w-4xl max-w-md">
