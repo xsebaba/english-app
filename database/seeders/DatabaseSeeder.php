@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use \App\Models\User;
+use \App\Models\UserRole;
 use \App\Models\Diary;
 use \App\Models\Answer;
 use \App\Models\Course;
@@ -31,11 +32,22 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'pedzel',
             'email' => 'pedzel@test.com',
-            'password' => Hash::make('qwerty1234')
+            'password' => Hash::make('qwerty1234'),
+            'user_role_id' =>2,
         ]);
         
         Level::create([
             'grade'=> 'A1'
+        ]);
+
+        UserRole::create([
+            'role'=> 'student'
+        ]);
+        UserRole::create([
+            'role'=> 'teacher'
+        ]);
+        UserRole::create([
+            'role'=> 'admin'
         ]);
 
         Subject::create([

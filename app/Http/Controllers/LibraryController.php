@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class LibraryController extends Controller
 {
     public function show(){
+        
         $user = auth()->user();
         return view('library', compact('user'));
     }

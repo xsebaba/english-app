@@ -26,13 +26,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/diary', [DiaryController::class, 'index'])->name('diary');
-Route::get('/diary/create', [DiaryController::class, 'create'])->name('createDiary');
-Route::post('/diary', [DiaryController::class, 'store'])->name('uploadDiary');
-Route::get('/diary/{user}', [DiaryController::class, 'show']);
-Route::get('/diary/edit/{diary}',[DiaryController::class, 'edit']);
-Route::patch('/diary/{diary}',[DiaryController::class, 'update']);
-Route::delete('/diary/{diary}', [DiaryController::class, 'destroy']);
+Route::get('/diary', [DiaryController::class, 'index'])->middleware('teacher')->name('diary');
+Route::get('/diary/create', [DiaryController::class, 'create'])->middleware('teacher')->name('createDiary');
+Route::post('/diary', [DiaryController::class, 'store'])->middleware('teacher')->name('uploadDiary');
+Route::get('/diary/{user}', [DiaryController::class, 'show'])->middleware('teacher');
+Route::get('/diary/edit/{diary}',[DiaryController::class, 'edit'])->middleware('teacher');
+Route::patch('/diary/{diary}',[DiaryController::class, 'update'])->middleware('teacher');
+Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->middleware('teacher');
 
 
 Route::get('/library', [LibraryController::class, 'show'])->middleware(['auth', 'verified'])->name('library');
@@ -45,15 +45,21 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/przetestuj-swoj-angielski', [InitialQuizController::class, 'index'])->name('quiz.index');
 
+
 Route::post('/dashboard', [InitialQuizController::class, 'storeAnswer'])->name('quiz.answer');
 Route::post('/dashboard', [InitialQuizController::class, 'storeAnswer'])->name('quiz.answer');
 Route::post('/result', [InitialQuizController::class, 'showResult'])->name('quiz.result');
+// w przypadku gdyby ktoś ręcznie wysłał zapytanie
 Route::get('/result', function(){ 
-    return redirect('/'); // w przypadku gdyby ktoś ręcznie wysłał zapytanie
+    return redirect('/'); 
+});
+Route::get('/dashboard', function(){ 
+    return redirect('/'); 
 });
 Route::get('/firstregistration', function(){ 
-    return redirect('/register'); // w przypadku gdyby ktoś ręcznie wysłał zapytanie
+    return redirect('/register');
 });
+
 Route::post('/firstregistration', [RegisteredUserController::class, 'createafterquiz'])->name('quiz.register');
 Route::post('/registerafterquiz', [RegisteredUserController::class, 'storeafterquiz'])->name('quiz.registerafterquiz');
 Route::get('/registerafterquiz', function(){ 
