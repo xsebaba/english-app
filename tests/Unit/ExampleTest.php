@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
@@ -10,9 +10,11 @@ class ExampleTest extends TestCase
      * A basic test example.
      *
      * @return void
+     * *test
      */
-    public function test_that_true_is_true()
+    public function test_a_user_can_browse_lessons()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/lessons');
+        $response->assertStatus(200);
     }
 }

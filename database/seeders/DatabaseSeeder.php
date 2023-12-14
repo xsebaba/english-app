@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use \App\Models\User;
+use \App\Models\Product;
 use \App\Models\UserRole;
 use \App\Models\Diary;
 use \App\Models\Answer;
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
+        Product::factory(10)->create();
 
         User::create([
             'name' => 'pedzel',

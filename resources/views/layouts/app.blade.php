@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-      Language clinic - najlepsza szkoła językowa
-    </title>
+
     <meta name="description" content="Sprawdź swój angielski i pobierz darmowe materiały z naszej szkoły językowej. Naucz się angielskieg z nami rozmawiaj swobodnie" />
     <meta name="keywords" content="język angielski, nauka języka, american english, tutlo, szkołajęzykowa, język dla ciebie, skuteczna nauka języka, szybka nauka angielskiego, angielski od podstaw, angielski dla dorosłych, angielski dla zaawansowanych, szkoła językowawarszawa, szkoła językowa opoczno, szkoła językowa ełk, szkoła językowa Augustów, Szkoła językowa Łódź" />
     <meta name="author" content="Wise - szkoła językowa" />
@@ -91,6 +89,9 @@
       
     </style>
     @vite('resources/css/app.css')
+
+ 
+  
   </head>
   <body class="leading-normal tracking-normal text-slate-800 bg-slate-100" style="font-family:'Source Sans Pro', sans-serif;">
     <!--Nav-->
@@ -111,6 +112,14 @@
         </div>
         <div class="w-full flex-grow lg:flex items-center lg:w-auto hidden lg:mt-0 bg-slate-100/80 lg:bg-transparent text-slate-800 lg:p-0 z-20 mt-3"  id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center md:mb-0 pb-2">
+            @if(Session::has('cart'))
+            <li class="mr-3">
+              <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="{{ route('shoppingCart')}}">Koszyk <span class="bg-lime-200 rounded rounded-md px-2"> {{Session::get('cart')->totalQty}}</span></a>
+            </li>
+            @endif
+            <li class="mr-3">
+              <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="{{route('products')}}">Sklep</a>
+            </li>
             <li class="mr-3">
               <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="/przetestuj-swoj-angielski">Przetestuj swój angielski</a>
             </li>
@@ -118,7 +127,6 @@
               <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="#">O nas</a>
             </li>
             @auth
-             
               <li class="mr-3">
                 <a class="toggleColour inline-block py-2 px-4 font-bold no-underline transform transition hover:scale-110 duration-300 ease-in-out" style="font-family:'Orbitron'" href="{{route('library')}}">Biblioteka</a>
               </li>

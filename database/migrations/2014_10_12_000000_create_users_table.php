@@ -20,6 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->foreignId('library_id')->onDelete('cascade')->nullable();
             $table->foreignId('user_role_id')->onDelete('cascade')->nullable();
+            $table->string('street')->nullable();
+            $table->string('house_number')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postal_code')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

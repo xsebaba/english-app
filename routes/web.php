@@ -3,12 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\InitialQuizController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\EmailsController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Mail\WelcomeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +76,23 @@ Route::get('/course/{course:course_slug}', [CourseController::class, 'show']);
 
 Route::get('/lessons', [LessonController::class, 'index'])->name('lessons');
 Route::get('/lesson/{lesson:lesson_slug}', [LessonController::class, 'show']);
+
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/product/{product:slug}', [ProductController::class, 'show']);
+
+Route::get('/add-to-cart/{id}/{continue?}', [ProductController::class, 'addToCart'])->name('addToCart');
+Route::get('/shopping-cart', [ProductController::class, 'getCart'])->name('shoppingCart');
+Route::get('/checkout', [ProductController::class, 'getCheckout'])->name('checkout');
+Route::post('/checkout', [StripeController::class, 'postCheckout']);
+Route::get('/success', [StripeController::class, 'success'])->name('checkout.success');
+Route::post('/cancel', [StripeController::class,'cancel'])->name('checkout.cancel');
+Route::post('/webhook', [StripeController::class,'webhook'])->name('checkout.webhook');
+
+//Route for mailing
+/*Route::get('/email', function(){
+    Mail::to('kolec@wp.pl')->send(new WelcomeMail());
+    return new App\Mail\WelcomeMail();
+});*/
+Route::get('/email', [EmailsController::class, 'email']);
+
 require __DIR__.'/auth.php';
